@@ -91,7 +91,22 @@ def main():
 
     with open(config.OUTPUTS_DIR / "eda_summary.json", "w") as f:
         json.dump(summary, f, indent=2)
-    print(json.dumps(summary, indent=2))
+
+    print("=== PathSnap Dataset EDA ===")
+    for p in ("train", "student_test"):
+        s = df[df["partition"] == p]
+        st = summary[p]
+        print(f"\n[{p}] trips={st['num_trips']}, total_gps_obs={st['total_gps_obs']:,}, NaNs={st['nans_total']}")
+        print(f"  obs/trip (min/med/max): {st['obs_per_trip_min_med_max']}")
+        print(f"  non-1s gaps: {st['non_1s_fraction']*100:.2f}% | dt range: [{st['min_dt_s']:.1f}s, {st['max_dt_s']:.1f}s]")
+        print(f"  median network: {st['median_nodes']:.0f} nodes, {st['median_arcs']:.0f} arcs | median route: {st['median_route_len']:.0f} arcs")
+        print(f"  mean route continuity: {st['mean_route_continuity']:.4f}")
+        print(f"  connected components (med/max): {s['n_components'].median():.0f} / {s['n_components'].max()} | isolated nodes (med/max): {s['isolated_nodes'].median():.0f} / {s['isolated_nodes'].max()}")
+        print(f"  track km (min/med/max): {s['total_track_km'].min():.2f} / {s['total_track_km'].median():.2f} / {s['total_track_km'].max():.2f}")
+
+    top_gaps = df.nlargest(5, "max_dt_s")[["partition", "trip_id", "n_obs", "max_dt_s", "max_gps_jump_m"]]
+    print("\nTop 5 trips by max timestamp gap:")
+    print(top_gaps.to_string(index=False))
 
     plt.figure(figsize=(8, 4))
     for p, c in [("train", "#2b5c8f"), ("student_test", "#d95f02")]:
