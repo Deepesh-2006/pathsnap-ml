@@ -1,0 +1,36 @@
+{
+  "train": {
+    "num_trips": 80,
+    "total_gps_obs": 208417,
+    "obs_per_trip_min_med_max": [
+      361,
+      1529.0,
+      19313
+    ],
+    "nans_total": 0,
+    "non_1s_fraction": 0.03496258465851001,
+    "max_dt_s": 153064.0,
+    "min_dt_s": 0.9999999999998863,
+    "median_nodes": 9608.0,
+    "median_arcs": 19526.5,
+    "median_route_len": 280.0,
+    "mean_route_continuity": 0.9993461551444497
+  },
+  "student_test": {
+    "num_trips": 10,
+    "total_gps_obs": 19160,
+    "obs_per_trip_min_med_max": [
+      262,
+      1420.0,
+      3958
+    ],
+    "nans_total": 0,
+    "non_1s_fraction": 0.013785900783289817,
+    "max_dt_s": 210.0,
+    "min_dt_s": 1.0,
+    "median_nodes": 6596.5,
+    "median_arcs": 13145.0,
+    "median_route_len": 250.0,
+    "mean_route_continuity": 0.9997319034852546
+  }
+}

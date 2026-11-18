@@ -1,0 +1,72 @@
+{
+  "results": [
+    {
+      "Model": "LogisticRegression",
+      "Algorithm Family": "Linear / Probabilistic",
+      "Key Configuration": "StandardScaler + C=1.0, max_iter=300",
+      "CV Macro F1": 0.8609,
+      "Top-1 Accuracy": 0.8158,
+      "Route Continuity": 0.7316,
+      "Student-Test Macro F1": 0.8853,
+      "Log Loss": 0.1059,
+      "Train Time (s)": 0.84,
+      "Inference Time (s)": 0.004
+    },
+    {
+      "Model": "RandomForest",
+      "Algorithm Family": "Ensemble (Bagging)",
+      "Key Configuration": "n_estimators=80, max_depth=12, min_samples_leaf=15",
+      "CV Macro F1": 0.8859,
+      "Top-1 Accuracy": 0.8326,
+      "Route Continuity": 0.7467,
+      "Student-Test Macro F1": 0.905,
+      "Log Loss": 0.0812,
+      "Train Time (s)": 50.23,
+      "Inference Time (s)": 0.0871
+    },
+    {
+      "Model": "XGBoost",
+      "Algorithm Family": "Boosting (GBDT)",
+      "Key Configuration": "n_estimators=200, max_depth=6, lr=0.08, hist",
+      "CV Macro F1": 0.8865,
+      "Top-1 Accuracy": 0.8355,
+      "Route Continuity": 0.757,
+      "Student-Test Macro F1": 0.9063,
+      "Log Loss": 0.0805,
+      "Train Time (s)": 6.27,
+      "Inference Time (s)": 0.0528
+    }
+  ],
+  "confusion_matrices": {
+    "LogisticRegression": [
+      [
+        170025,
+        2593
+      ],
+      [
+        4837,
+        14145
+      ]
+    ],
+    "RandomForest": [
+      [
+        169778,
+        2840
+      ],
+      [
+        3553,
+        15429
+      ]
+    ],
+    "XGBoost": [
+      [
+        169526,
+        3092
+      ],
+      [
+        3289,
+        15693
+      ]
+    ]
+  }
+}
